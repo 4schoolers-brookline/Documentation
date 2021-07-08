@@ -1,3 +1,683 @@
+<!doctype html>
 <html>
-	<h1>hello world!</h1>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Poloniex API Reference</title>
+
+  <style>
+    .highlight table td {
+      padding: 5px;
+    }
+
+    .highlight table pre {
+      margin: 0;
+    }
+
+    .highlight .gh {
+      color: #999999;
+    }
+
+    .highlight .sr {
+      color: #f6aa11;
+    }
+
+    .highlight .go {
+      color: #888888;
+    }
+
+    .highlight .gp {
+      color: #555555;
+    }
+
+    .highlight .gs {}
+
+    .highlight .gu {
+      color: #aaaaaa;
+    }
+
+    .highlight .nb {
+      color: #f6aa11;
+    }
+
+    .highlight .cm {
+      color: #75715e;
+    }
+
+    .highlight .cp {
+      color: #75715e;
+    }
+
+    .highlight .c1 {
+      color: #75715e;
+    }
+
+    .highlight .cs {
+      color: #75715e;
+    }
+
+    .highlight .c,
+    .highlight .cd {
+      color: #75715e;
+    }
+
+    .highlight .err {
+      color: #960050;
+    }
+
+    .highlight .gr {
+      color: #960050;
+    }
+
+    .highlight .gt {
+      color: #960050;
+    }
+
+    .highlight .gd {
+      color: #49483e;
+    }
+
+    .highlight .gi {
+      color: #49483e;
+    }
+
+    .highlight .ge {
+      color: #49483e;
+    }
+
+    .highlight .kc {
+      color: #66d9ef;
+    }
+
+    .highlight .kd {
+      color: #66d9ef;
+    }
+
+    .highlight .kr {
+      color: #66d9ef;
+    }
+
+    .highlight .no {
+      color: #66d9ef;
+    }
+
+    .highlight .kt {
+      color: #66d9ef;
+    }
+
+    .highlight .mf {
+      color: #ae81ff;
+    }
+
+    .highlight .mh {
+      color: #ae81ff;
+    }
+
+    .highlight .il {
+      color: #ae81ff;
+    }
+
+    .highlight .mi {
+      color: #ae81ff;
+    }
+
+    .highlight .mo {
+      color: #ae81ff;
+    }
+
+    .highlight .m,
+    .highlight .mb,
+    .highlight .mx {
+      color: #ae81ff;
+    }
+
+    .highlight .sc {
+      color: #ae81ff;
+    }
+
+    .highlight .se {
+      color: #ae81ff;
+    }
+
+    .highlight .ss {
+      color: #ae81ff;
+    }
+
+    .highlight .sd {
+      color: #e6db74;
+    }
+
+    .highlight .s2 {
+      color: #e6db74;
+    }
+
+    .highlight .sb {
+      color: #e6db74;
+    }
+
+    .highlight .sh {
+      color: #e6db74;
+    }
+
+    .highlight .si {
+      color: #e6db74;
+    }
+
+    .highlight .sx {
+      color: #e6db74;
+    }
+
+    .highlight .s1 {
+      color: #e6db74;
+    }
+
+    .highlight .s {
+      color: #e6db74;
+    }
+
+    .highlight .na {
+      color: #a6e22e;
+    }
+
+    .highlight .nc {
+      color: #a6e22e;
+    }
+
+    .highlight .nd {
+      color: #a6e22e;
+    }
+
+    .highlight .ne {
+      color: #a6e22e;
+    }
+
+    .highlight .nf {
+      color: #a6e22e;
+    }
+
+    .highlight .vc {
+      color: #ffffff;
+    }
+
+    .highlight .nn {
+      color: #ffffff;
+    }
+
+    .highlight .nl {
+      color: #ffffff;
+    }
+
+    .highlight .ni {
+      color: #ffffff;
+    }
+
+    .highlight .bp {
+      color: #ffffff;
+    }
+
+    .highlight .vg {
+      color: #ffffff;
+    }
+
+    .highlight .vi {
+      color: #ffffff;
+    }
+
+    .highlight .nv {
+      color: #ffffff;
+    }
+
+    .highlight .w {
+      color: #ffffff;
+    }
+
+    .highlight {
+      color: #ffffff;
+    }
+
+    .highlight .n,
+    .highlight .py,
+    .highlight .nx {
+      color: #ffffff;
+    }
+
+    .highlight .ow {
+      color: #f92672;
+    }
+
+    .highlight .nt {
+      color: #f92672;
+    }
+
+    .highlight .k,
+    .highlight .kv {
+      color: #f92672;
+    }
+
+    .highlight .kn {
+      color: #f92672;
+    }
+
+    .highlight .kp {
+      color: #f92672;
+    }
+
+    .highlight .o {
+      color: #f92672;
+    }
+  </style>
+  <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+  <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+  <script src="javascripts/all.js"></script>
+</head>
+
+<body class="index" data-languages="[&quot;shell&quot;]">
+  <a href="#" id="nav-button">
+    <span>
+      NAV
+      <img src="images/navbar.png" alt="Navbar" />
+    </span>
+  </a>
+  <div class="toc-wrapper">
+    <img src="images/logo.png" class="logo" alt="Logo" />
+    <div class="lang-selector">
+      <a href="#" data-language-name="shell">shell</a>
+    </div>
+    <div class="search">
+      <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+    <ul id="toc" class="toc-list-h1">
+      <li>
+        <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+      </li>
+      <li>
+        <a href="#activity-heading" class="toc-h1 toc-link" data-title="Getting Started">Activity</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#models-activity" class="toc-h2 toc-link" data-title="Sign Up">Models</a>
+          </li>
+          <li>
+            <a href="#urls-activity" class="toc-h2 toc-link" data-title="Create an API Key">Urls</a>
+          </li>
+          <li>
+            <a href="#views-activity" class="toc-h2 toc-link" data-title="Authenticate">Views</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#bank-heading" class="toc-h1 toc-link" data-title="Getting Started">Bank</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#models-bank" class="toc-h2 toc-link" data-title="Sign Up">Models</a>
+          </li>
+          <li>
+            <a href="#urls-bank" class="toc-h2 toc-link" data-title="Create an API Key">Urls</a>
+          </li>
+          <li>
+            <a href="#views-bank" class="toc-h2 toc-link" data-title="Authenticate">Views</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#student-heading" class="toc-h1 toc-link" data-title="Getting Started">Student</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#models-student" class="toc-h2 toc-link" data-title="Sign Up">Models</a>
+          </li>
+          <li>
+            <a href="#urls-student" class="toc-h2 toc-link" data-title="Create an API Key">Urls</a>
+          </li>
+          <li>
+            <a href="#views-student" class="toc-h2 toc-link" data-title="Authenticate">Views</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#parent-heading" class="toc-h1 toc-link" data-title="Getting Started">Parent</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#models-parent" class="toc-h2 toc-link" data-title="Sign Up">Models</a>
+          </li>
+          <li>
+            <a href="#urls-parent" class="toc-h2 toc-link" data-title="Create an API Key">Urls</a>
+          </li>
+          <li>
+            <a href="#views-parent" class="toc-h2 toc-link" data-title="Authenticate">Views</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#employee-heading" class="toc-h1 toc-link" data-title="Getting Started">Employee</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#models-employee" class="toc-h2 toc-link" data-title="Sign Up">Models</a>
+          </li>
+          <li>
+            <a href="#urls-employee" class="toc-h2 toc-link" data-title="Create an API Key">Urls</a>
+          </li>
+          <li>
+            <a href="#views-employee" class="toc-h2 toc-link" data-title="Authenticate">Views</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#manager-heading" class="toc-h1 toc-link" data-title="Getting Started">Manager</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#models-manager" class="toc-h2 toc-link" data-title="Sign Up">Models</a>
+          </li>
+          <li>
+            <a href="#urls-manager" class="toc-h2 toc-link" data-title="Create an API Key">Urls</a>
+          </li>
+          <li>
+            <a href="#views-manager" class="toc-h2 toc-link" data-title="Authenticate">Views</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+  <div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+      <h1 id='introduction'>Introduction</h1>
+      <blockquote>
+        <p>Setup</p>
+      </blockquote>
+      <pre class="highlight shell tab-shell"><code><span class="c"># make sure you have curl installed</span>
+</code></pre>
+      <p>Poloniex provides both HTTP and websocket APIs for interacting with the exchange. Both allow read access to public market data and private read access to your account. Private write access to your account is available via the private HTTP
+        API.</p>
+
+      <p>The public HTTP endpoint is accessed via GET requests while the private endpoint is accessed via HMAC-SHA512 signed POST requests using <a href="https://poloniex.com/apiKeys">API keys</a>. Both types of HTTP endpoints return results in JSON
+        format.</p>
+
+      <p>The websocket API allows push notifications about the public order books, lend books and your private account. Similarly to the HTTP API, it requires HMAC-SHA512 signed requests using <a href="https://poloniex.com/apiKeys">API keys</a> for
+        requests related to your private account.</p>
+
+      <h1 id='activity-heading'>Activity</h1>
+
+      <h2 id='models-activity'>Models</h2>
+      <h2>Activity</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Type<th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>employee</td>
+            <td>OneToOneField</td>
+            <td>Employee asigned to the activity.</td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>CharField</td>
+            <td>Describes what type of activity is it.</td>
+            <td>"Lesson", "Advising", "Administrative", "Other"</td>
+          </tr>
+          <tr>
+            <td>start</td>
+            <td>DateTimeField</td>
+            <td>Time when activity starts.</td>
+            <td>2006-10-25 14:30:59</td>
+          </tr>
+          <tr>
+            <td>end</td>
+            <td>DateTimeField</td>
+            <td>Time when activity ends.</td>
+            <td>2006-10-25 14:30:59</td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>CharField</td>
+            <td>Name of the activity<./td>
+            <td>"String"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td>CharField</td>
+            <td>Description of the activity.</td>
+            <td>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu"</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Submission</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type<th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>name</td>
+            <td>CharField</td>
+            <td>Name of the submission.</td>
+            <td> "String" </td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td>TextField</td>
+            <td>Description of the submission.</td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>owner</td>
+            <td>ForeignKey</td>
+            <td>User that uploaded submission.</td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>account_type</td>
+            <td>CharField</td>
+            <td>Which type of user uploaded submission.</td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>CharField</td>
+            <td>Type of the submission.</td>
+            <td>"Homework_Submission", "Classwork", "Curriculum", "Homework"</td>
+          </tr>
+          <tr>
+            <td>file</td>
+            <td>FileField</td>
+            <td>File with the submission.</td>
+            <td> - </td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Lesson</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type<th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>students</td>
+            <td>ManyToManyField</td>
+            <td>Students that have this lesson.</td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>teacher</td>
+            <td>ForeignKey</td>
+            <td>Teacher that has the lesson.</td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>name</td>
+            <td>CharField</td>
+            <td>Name of the lesson.</td>
+            <td>"string"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td>CharField</td>
+            <td>Description of the lesson.</td>
+            <td>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu"</td>
+          </tr>
+          <tr>
+            <td>subject</td>
+            <td>CharField</td>
+            <td>Subject of the lesson.</td>
+            <td>'Mathematics', 'Computer Science', 'English', 'Chemistry', 'Physics', 'History'</td>
+          </tr>
+          <tr>
+            <td>classwork</td>
+            <td>OneToOneField</td>
+            <td>Assignment that is done on lesson.</td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>homework</td>
+            <td>OneToOneField</td>
+            <td>Assignment that is done after the lesson.</td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>homework_submissions</td>
+            <td>ManyToManyField</td>
+            <td>Submissions for the assignment that are related to this lesson. </td>
+            <td> - </td>
+          </tr>
+          <tr>
+            <td>start</td>
+            <td>DateTimeField</td>
+            <td>Start of the lesson time.</td>
+            <td>2006-10-25 14:30:59</td>
+          </tr>
+          <tr>
+            <td>end</td>
+            <td>DateTimeField</td>
+            <td>End of the lesson time.</td>
+            <td>2006-10-25 14:30:59</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id='urls-activity'>Urls</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='views-activity'>Views</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+
+
+      <h1 id='bank-heading'>Bank</h1>
+
+      <h3 id='models-bank'>Models</h3>
+
+      <h3 id='urls-bank'>Urls</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='views-bank'>Views</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+
+      <h1 id='student-heading'>Student</h1>
+
+      <h3 id='models-student'>Models</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='urls-student'>Urls</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='views-student'>Views</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+
+      <h1 id='parent-heading'>Parent</h1>
+
+      <h3 id='models-parent'>Models</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='urls-parent'>Urls</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='views-parent'>Views</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+
+      <h1 id='employee-heading'>Employee</h1>
+
+      <h3 id='models-employee'>Models</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='urls-employee'>Urls</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='views-employee'>Views</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+
+      <h1 id='manager-heading'>Manager</h1>
+
+      <h3 id='models-manager'>Models</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='urls-manager'>Urls</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+      <h3 id='views-manager'>Views</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ligula justo, cursus vel dapibus at, suscipit vitae arcu. Duis ullamcorper urna at libero posuere iaculis eget sit amet arcu. Morbi aliquet tincidunt diam id commodo. In hac
+        habitasse platea dictumst. Nulla purus erat, consectetur vitae tristique ac, interdum in nibh. Donec ultrices auctor nisi vitae rutrum. Nullam ultricies, est at sagittis placerat, ipsum diam malesuada nisl, eget rhoncus erat ex sit amet quam.
+        Mauris consequat lacus sit amet fermentum ultricies. Phasellus interdum dui a metus viverra, in accumsan urna pretium. Vivamus consequat feugiat blandit. Phasellus vehicula lectus eget lacus cursus, eu pretium erat placerat. Quisque placerat
+        condimentum aliquam.</p>
+
+    </div>
+    <div class="dark-box">
+      <div class="lang-selector">
+        <a href="#" data-language-name="shell">shell</a>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
